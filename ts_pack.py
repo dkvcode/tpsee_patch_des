@@ -25,8 +25,9 @@ krnl_key = b'u7k41888'
 rootfs_key = b'VjohnnyV'
 
 def des_encrypt(data, des_key):
-    iv =b'\x00\x00\x00\x00\x00\x00\x00\x00'
-    dh = DES.new(des_key, DES.MODE_ECB, iv)
+    #iv =b'\x00\x00\x00\x00\x00\x00\x00\x00'
+    #dh = DES.new(des_key, DES.MODE_ECB, iv)
+    dh = DES.new(des_key, DES.MODE_ECB)
     cryplen = len(data) - (len(data) % 8)
     return dh.encrypt(bytes(data[:cryplen])) + data[cryplen:]
 
