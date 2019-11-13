@@ -30,8 +30,9 @@ def to_str(data):
         return data
 
 def des_decrypt(data, des_key):
-    iv =b'\x00\x00\x00\x00\x00\x00\x00\x00'
-    dh = DES.new(des_key, DES.MODE_ECB, iv)
+    #iv =b'\x00\x00\x00\x00\x00\x00\x00\x00'
+    #dh = DES.new(des_key, DES.MODE_ECB, iv)
+    dh = DES.new(des_key, DES.MODE_ECB)
     cryplen = len(data) - (len(data) % 8)
     return dh.decrypt(bytes(data[:cryplen])) + data[cryplen:]
 
